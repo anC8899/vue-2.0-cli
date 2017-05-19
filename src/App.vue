@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!--<hello></hello>-->
-    <todos :todos="todos"></todos>
-    <todo-form :todos="todos"></todo-form>
+    <router-view :todos="todos"></router-view>
   </div>
 </template>
 
 <script>
-//import Hello from './components/Hello'
 import Todos from './components/Todos.vue'
-import TodoForm from './components/TodoForm.vue'
 
 export default {
   name: 'app',
@@ -21,13 +15,12 @@ export default {
     }
   },
   mounted() {
-    this.axios.get('http://fengqi.app/api/todo/').then((response) => {
+    this.axios.get('http://fengqi.app/api/todos/').then((response) => {
       this.todos = response.data;
-      console.log(response);
+//      console.log(response);
     })
   },
   components: {
-    Todos, TodoForm
   }
 }
 </script>
